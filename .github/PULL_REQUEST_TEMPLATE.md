@@ -1,3 +1,5 @@
+<!-- PR template: FR/EN -->
+
 <!--
 Thanks for contributing!
 FR/EN template below. You can delete the part you don't use.
