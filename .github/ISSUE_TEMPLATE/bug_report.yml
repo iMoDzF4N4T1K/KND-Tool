@@ -1,0 +1,88 @@
+name: "🐞 Bug report / Rapport de bug"
+description: "FR/EN — Signaler un bug (champs obligatoires) / Report a bug (required fields)"
+title: "[BUG] "
+labels: ["bug"]
+assignees:
+  - iMoDzF4N4T1K
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **FR/EN** — Merci de remplir au minimum **une langue** (FR ou EN).  
+        **Tip:** If you can, attach a `.knd` file or screenshot/video.
+
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Langue principale / Main language
+      options:
+        - Français (FR)
+        - English (EN)
+        - Both / Les deux
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version du KND-Tool / KND-Tool version
+      placeholder: "ex: 1.0.1.5"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "ex: Windows 11 23H2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: Problème / What happened?
+      description: "FR ou EN — décris ce qui se passe."
+      placeholder: "Ex: L’export JSON plante quand j’ouvre un .knd..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Étapes pour reproduire / Steps to reproduce
+      placeholder: |
+        1) ...
+        2) ...
+        3) ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Résultat attendu / Expected result
+      placeholder: "Ce qui devrait se passer."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Résultat obtenu / Actual result
+      placeholder: "Ce qui se passe réellement."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Erreurs (si dispo)
+      description: "Colle le message d’erreur ou un extrait de console."
+      render: shell
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Fichiers & preuves / Attachments
+      description: "Glisse-dépose ici : `.knd`, captures, vidéo, etc."
