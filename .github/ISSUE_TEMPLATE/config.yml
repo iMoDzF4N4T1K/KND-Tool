@@ -1,5 +1,5 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: 💬 Questions / Support
-    url: https://github.com/iMoDzF4N4T1K/KND-Tool/discussions
-    about: Please use Discussions for questions and support.
+  - name: "💬 Questions / Support (Discussions)"
+    url: "https://github.com/iMoDzF4N4T1K/KND-Tool/discussions"
+    about: "FR: Pour l'aide, les questions et le support, utilise Discussions. | EN: For help, questions and support, please use Discussions."
