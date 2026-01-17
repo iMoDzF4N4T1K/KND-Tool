@@ -8,6 +8,33 @@
 
 ---
 
+## 🌍 Language / Langue
+
+- 🇫🇷 **Français** → [Aller à la section FR](#-français)
+- 🇬🇧 **English** → [Go to EN section](#-english)
+
+---
+
+# 🇫🇷 Français
+
+## 🧭 Sommaire
+- [Présentation](#-présentation)
+- [Téléchargement](#-téléchargement)
+- [Prérequis](#-prérequis)
+- [Installation & Lancement](#-installation--lancement)
+- [Auto-détection du dossier tunes](#-auto-détection-du-dossier-tunes)
+- [Fonctions](#-fonctions)
+- [Paramètres](#-paramètres)
+- [Update Checker GitHub](#-update-checker-github)
+- [Dossiers générés](#-dossiers-générés)
+- [FAQ](#-faq)
+- [Roadmap](#-roadmap)
+- [Contribuer](#-contribuer)
+- [Crédits](#-crédits)
+- [Licence](#-licence)
+
+---
+
 ## 🇫🇷 Présentation
 
 **KND-Tool** est un outil simple et rapide pour travailler sur les fichiers **`.knd`** (tunes) utilisés par **Kino** dans *CarX Drift Racing Online*.
@@ -18,6 +45,201 @@
 ✅ Comparer deux tunes (**diff**)  
 ✅ Interface **multi-langues** : FR / EN / DE / RU / ZH / JA / IT / ES / PT  
 ✅ Option **Update checker GitHub** (via **Releases**)  
+
+---
+
+## 📦 Téléchargement
+
+- Recommandé : utilise **Releases** sur GitHub pour télécharger la dernière version.
+- Tu peux aussi télécharger le `.py` directement depuis le repo.
+
+> ⚠️ L’update checker fonctionne **uniquement** si le repo configuré publie des **Releases GitHub**.
+
+---
+
+## ✅ Prérequis
+
+- **Windows** (recommandé)
+- **Python 3.9+** (testé sur 3.11)
+- Aucun module externe requis (standard library uniquement)
+
+---
+
+## 🚀 Installation & Lancement
+
+### Méthode simple (recommandée)
+1. Télécharge le script `.py`
+2. Mets-le où tu veux (**Bureau**, dossier mods, etc.)
+3. Double-clic (ou clic droit → *Ouvrir avec Python*)
+
+### Via console
+```bash
+python "KND Tool 1.0.1.5.py"
+```
+
+---
+
+## 📁 Auto-détection du dossier tunes
+
+KND-Tool essaie de retrouver automatiquement :
+```
+...\CarX Drift Racing Online\kino\mods\KN_Base\tunes
+```
+
+Si CarX est installé sur un autre disque (E:\, D:\, etc.), ça marche aussi.
+
+Si jamais ça ne trouve pas :
+- **Paramètres** → **Chemin tunes** → colle le chemin complet
+
+Exemple :
+```
+E:\SteamLibrary\steamapps\common\CarX Drift Racing Online\kino\mods\KN_Base\tunes
+```
+
+---
+
+## 🧭 Fonctions
+
+### 1) Exporter KND → JSON (sections)
+- Exporte un `.json` dans `_knd_json`
+- Les valeurs sont gérées par sections (**SECTION1 / SECTION2**) quand le format le permet
+
+### 2) Exporter KND → TXT (sections)
+- Exporte un `.txt` dans `_knd_txt`
+- Parfait pour lire vite / partager
+
+### 3) JSON → KND (patch) → `_EDIT.knd`
+- Applique les valeurs d’un `.json` sur un `.knd`
+- Sortie dans `_knd_out` avec suffixe **`_EDIT.knd`**
+- Option **backup** dans `_backup`
+
+### 4) Afficher paramètres d’un KND
+- Affiche les paramètres et valeurs dans la console
+
+### 5) Comparer 2 KND (diff)
+- Compare A vs B
+- Affiche uniquement ce qui change
+
+---
+
+## ⚙️ Paramètres
+
+Dans **Paramètres**, tu peux :
+- changer la **langue**
+- définir le **chemin tunes**
+- régler les options par défaut :
+  - patch SECTION1 / SECTION2
+  - backup avant patch
+  - scan récursif
+- **Update (GitHub)** :
+  - configurer `USER/REPO`
+  - vérifier une mise à jour via `Releases/latest`
+- afficher **Changelog** et **Crédits**
+
+Tout est sauvegardé dans :
+```
+knd_tool_config.json
+```
+
+---
+
+## 🔄 Update Checker GitHub
+
+Le tool peut vérifier si une **nouvelle version** est disponible via les **Releases GitHub**.
+
+### ✅ Repo officiel (recommandé)
+Dans **Paramètres → Update (GitHub)**, mets :
+```
+iMoDzF4N4TiK/KND-Tool
+```
+
+### 🧑‍🔧 Si tu utilises un fork (ton propre repo)
+Si tu as fork le projet sur ton compte, remplace par ton repo :
+```
+TON_USER/KND-Tool
+```
+
+### 📌 Important
+L’update checker fonctionne **uniquement** si le repo configuré publie des **Releases**.  
+Crée une Release avec un tag du style :
+- `1.0.1.5`
+- ou `v1.0.1.5`
+
+---
+
+## 🧩 Dossiers générés
+
+Le tool crée automatiquement :
+```
+tunes/
+  _knd_json/   -> exports JSON
+  _knd_txt/    -> exports TXT
+  _knd_out/    -> fichiers patchés (_EDIT.knd)
+  _backup/     -> backups avant patch
+```
+
+---
+
+## 🛟 FAQ
+
+### “Je vois des valeurs > 1.0 (ex: 2.0) dans mon JSON, c’est normal ?”
+Oui : le tool peut écrire n’importe quelle valeur float.  
+**Mais** le comportement en jeu dépend de ce que CarX/Kino accepte réellement.
+
+### “Pourquoi mon update checker dit OFF ?”
+Tu n’as pas configuré `github_repo` dans Paramètres, ou tu n’as pas de Releases.
+
+### “Je peux casser mon tune ?”
+Oui si tu patches des valeurs extrêmes.  
+👉 Active **backup** (recommandé) pour pouvoir revenir en arrière.
+
+---
+
+## 🗺️ Roadmap
+- Export rapport diff en `.txt` / `.json`
+- Profils (Stock / Semi / Max) avec multiplicateurs
+- Catégories par onglets (Suspension/Moteur/Transmission/Poids)
+- GUI (optionnel) si demandé
+
+---
+
+## 🤝 Contribuer
+- Bugs / suggestions : onglet **Issues**
+- PR : bienvenue si ça garde le tool simple et stable
+
+---
+
+## 👑 Crédits
+**Author:** ιMσDzF4Π4ΤιK  
+Thanks:
+- CarX community modders  
+- Testers / users  
+
+---
+
+## 📜 Licence
+This project is licensed under the **GNU GPL v3.0**.  
+See: [LICENSE](LICENSE)
+
+---
+
+# 🇬🇧 English
+
+## 🧭 Table of Contents
+- [Overview](#-overview)
+- [Download](#-download)
+- [Requirements](#-requirements)
+- [Install & Run](#-install--run)
+- [Auto-detect tunes folder](#-auto-detect-tunes-folder)
+- [Features](#-features)
+- [Settings](#-settings)
+- [GitHub Update Checker](#-github-update-checker)
+- [Generated folders](#-generated-folders)
+- [FAQ](#-faq-1)
+- [Roadmap](#-roadmap-1)
+- [Contributing](#-contributing)
+- [Credits](#-credits)
+- [License](#-license)
 
 ---
 
@@ -36,10 +258,10 @@
 
 ## 📦 Download
 
-- Recommended: use **Releases** on GitHub to download the latest version.
-- You can also download the `.py` file directly from the repository.
+- Recommended: use **GitHub Releases** to download the latest version.
+- You can also download the `.py` directly from the repository.
 
-> ⚠️ The update checker works **only** if the configured repository publishes **GitHub Releases**.
+> ⚠️ The update checker works **only** if the configured repo publishes **GitHub Releases**.
 
 ---
 
@@ -51,7 +273,7 @@
 
 ---
 
-## 🚀 Installation & Run
+## 🚀 Install & Run
 
 ### Easy method (recommended)
 1. Download the `.py`
@@ -63,11 +285,9 @@
 python "KND Tool 1.0.1.5.py"
 ```
 
-> Tip: If Windows asks for an app, install Python from the Microsoft Store or python.org and check “Add to PATH”.
-
 ---
 
-## 📁 Auto-detect `tunes` folder
+## 📁 Auto-detect tunes folder
 
 KND-Tool tries to auto-detect:
 ```
@@ -110,20 +330,7 @@ E:\SteamLibrary\steamapps\common\CarX Drift Racing Online\kino\mods\KN_Base\tune
 
 ---
 
-## 🗂️ Generated folders
-
-The tool automatically creates:
-```
-tunes/
-  _knd_json/   -> JSON exports
-  _knd_txt/    -> TXT exports
-  _knd_out/    -> patched files (_EDIT.knd)
-  _backup/     -> backups before patch
-```
-
----
-
-## ⚙️ Settings (in-tool)
+## ⚙️ Settings
 
 In **Settings**, you can:
 - Change **language**
@@ -144,7 +351,7 @@ knd_tool_config.json
 
 ---
 
-## 🔄 Update Checker (GitHub)
+## 🔄 GitHub Update Checker
 
 The tool can check if a **new version** is available using **GitHub Releases**.
 
@@ -161,11 +368,24 @@ YOUR_USER/KND-Tool
 ```
 
 ### 📌 Important
-The update checker works **only** if the configured repository publishes **Releases**.
+The update checker works **only** if the configured repo publishes **Releases**.
 
 Create a GitHub Release with a tag like:
 - `1.0.1.5`
 - or `v1.0.1.5`
+
+---
+
+## 🗂️ Generated folders
+
+The tool automatically creates:
+```
+tunes/
+  _knd_json/   -> JSON exports
+  _knd_txt/    -> TXT exports
+  _knd_out/    -> patched files (_EDIT.knd)
+  _backup/     -> backups before patch
+```
 
 ---
 
@@ -184,7 +404,7 @@ Yes if you patch extreme values.
 
 ---
 
-## 🗺️ Roadmap (ideas)
+## 🗺️ Roadmap
 - Export diff report to `.txt` / `.json`
 - Presets (Stock / Semi / Max) with multipliers
 - Categories (Suspension / Engine / Transmission / Weight)
