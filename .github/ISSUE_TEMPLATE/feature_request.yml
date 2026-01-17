@@ -1,0 +1,59 @@
+name: "✨ Feature request / Demande de fonctionnalité"
+description: "FR/EN — Proposer une amélioration ou une nouvelle fonctionnalité"
+title: "[FEATURE] "
+labels: ["enhancement"]
+assignees:
+  - iMoDzF4N4TiK
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **FR/EN** — Merci de remplir au minimum une langue (FR ou EN).
+        **Tip:** Si possible, joins une capture / vidéo / fichier `.knd` si ça aide.
+
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Langue principale / Main language
+      options:
+        - "Français (FR)"
+        - "English (EN)"
+        - "Both / Les deux"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème / Why do you need this?
+      description: "FR ou EN — Explique le besoin, le contexte, le problème actuel."
+      placeholder: "Ex: Je dois refaire X à chaque fois, c’est long / j’aimerais pouvoir..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution souhaitée / What should happen?
+      description: "FR ou EN — Décris clairement la fonctionnalité attendue."
+      placeholder: "Ex: Ajouter un bouton / une option / un mode..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives / Workarounds
+      description: "FR ou EN — Ce que tu as essayé ou envisagé."
+      placeholder: "Ex: Je fais X manuellement, mais..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Contexte / Exemples / Screenshots
+      description: "Liens, exemples, captures, etc."
+    validations:
+      required: false
