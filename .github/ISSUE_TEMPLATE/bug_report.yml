@@ -1,67 +1,109 @@
 name: "🐞 Bug report / Rapport de bug"
-description: "FR/EN — Signaler un bug (champs obligatoires) / Report a bug (required fields)"
+description: "FR/EN — Signaler un bug (champs guidés + obligatoires)"
 title: "[BUG] "
 labels: ["bug"]
 assignees:
-  - iMoDzF4N4T1K
+  - iMoDzF4N4TiK
+
 body:
   - type: markdown
     attributes:
       value: |
-        **FR/EN** — Merci de remplir au minimum **une langue** (FR ou EN).  
-        **Tip:** If you can, attach a `.knd` file or screenshot/video.
+        **FR/EN** — Merci de remplir au minimum une langue (FR ou EN).  
+        **Tip:** joins un fichier `.knd` + logs/capture si possible.
 
   - type: dropdown
-    id: lang
+    id: main_lang
     attributes:
-      label: Langue principale / Main language
+      label: "Langue principale / Main language"
       options:
-        - Français (FR)
-        - English (EN)
-        - Both / Les deux
+        - "Français (FR)"
+        - "English (EN)"
+        - "Both / Les deux"
     validations:
       required: true
 
   - type: input
     id: version
     attributes:
-      label: Version du KND-Tool / KND-Tool version
+      label: "Version du KND-Tool / KND-Tool version"
       placeholder: "ex: 1.0.1.5"
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: os
     attributes:
-      label: OS
-      placeholder: "ex: Windows 11 23H2"
+      label: "OS"
+      options:
+        - "Windows 11"
+        - "Windows 10"
+        - "Other (specify in details)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: run_from
+    attributes:
+      label: "Où tu l’exécutes ? / Where do you run it from?"
+      options:
+        - "Desktop / Bureau"
+        - "Inside tunes folder / Dans le dossier tunes"
+        - "Other folder / Autre dossier"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: "Quelle action bug ? / Which action is bugged?"
+      options:
+        - "Export KND -> JSON"
+        - "Export KND -> TXT"
+        - "Patch JSON -> KND"
+        - "Diff / Compare"
+        - "Settings"
+        - "Update checker (GitHub)"
+        - "Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: "Gravité / Severity"
+      options:
+        - "Crash / Hard crash"
+        - "Bloquant / Blocking"
+        - "Gênant / Annoying"
+        - "Mineur / Minor"
     validations:
       required: true
 
   - type: textarea
     id: what
     attributes:
-      label: Problème / What happened?
-      description: "FR ou EN — décris ce qui se passe."
-      placeholder: "Ex: L’export JSON plante quand j’ouvre un .knd..."
+      label: "Problème / What happened?"
+      description: "FR ou EN — Décris clairement le bug."
+      placeholder: "Ex: Quand je fais Export JSON sur tel fichier, ça affiche une erreur..."
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: Étapes pour reproduire / Steps to reproduce
+      label: "Étapes pour reproduire / Steps to reproduce"
       placeholder: |
-        1) ...
-        2) ...
-        3) ...
+        1. ...
+        2. ...
+        3. ...
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Résultat attendu / Expected result
+      label: "Résultat attendu / Expected behavior"
       placeholder: "Ce qui devrait se passer."
     validations:
       required: true
@@ -69,20 +111,47 @@ body:
   - type: textarea
     id: actual
     attributes:
-      label: Résultat obtenu / Actual result
+      label: "Résultat actuel / Actual behavior"
       placeholder: "Ce qui se passe réellement."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: has_logs
+    attributes:
+      label: "Logs / erreurs disponibles ? / Do you have logs?"
+      options:
+        - "Yes / Oui"
+        - "No / Non"
     validations:
       required: true
 
   - type: textarea
     id: logs
     attributes:
-      label: Logs / Erreurs (si dispo)
-      description: "Colle le message d’erreur ou un extrait de console."
+      label: "Logs / Error message"
+      description: "Colle ici l’erreur (si tu as répondu Oui)."
       render: shell
+    validations:
+      required: false
 
   - type: textarea
     id: attachments
     attributes:
-      label: Fichiers & preuves / Attachments
-      description: "Glisse-dépose ici : `.knd`, captures, vidéo, etc."
+      label: "Fichiers / captures (optionnel)"
+      description: "Glisse-dépose ici : `.knd`, screenshots, vidéo, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Checklist"
+      options:
+        - label: "J’ai testé avec la dernière release."
+          required: true
+        - label: "J’ai donné des étapes claires."
+          required: true
+        - label: "J’ai joint logs/capture si possible."
+          required: false
+
