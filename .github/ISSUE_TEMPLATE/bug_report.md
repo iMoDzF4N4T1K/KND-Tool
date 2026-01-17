@@ -1,3 +1,11 @@
+---
+name: "🐛 Bug report / Rapport de bug (FR/EN)"
+about: "FR/EN requis • Report a bug (FR/EN required)"
+title: "[BUG] "
+labels: ["bug"]
+assignees: ["iMoDzF4N4T1K"]
+---
+
 <!--
 KND-Tool — Bug Report (FR/EN required)
 Please fill BOTH French and English sections.
