@@ -9,13 +9,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        **FR/EN** — Merci de remplir au minimum une langue (FR ou EN).  
-        **Tip:** joins un fichier `.knd` + logs/capture si possible.
+        Merci 🙌  
+        **FR/EN :** remplis au minimum une langue (FR ou EN).  
+        Astuce : joins un fichier `.knd` / capture / logs si possible.
 
   - type: dropdown
-    id: main_lang
+    id: lang
     attributes:
-      label: "Langue principale / Main language"
+      label: "Langue / Language"
       options:
         - "Français (FR)"
         - "English (EN)"
@@ -26,7 +27,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: "Version du KND-Tool / KND-Tool version"
+      label: "Version KND-Tool"
       placeholder: "ex: 1.0.1.5"
     validations:
       required: true
@@ -38,32 +39,44 @@ body:
       options:
         - "Windows 11"
         - "Windows 10"
-        - "Other (specify in details)"
+        - "Linux"
+        - "macOS"
+        - "Other"
     validations:
       required: true
+
+  - type: input
+    id: os_details
+    attributes:
+      label: "OS details (if needed)"
+      placeholder: "ex: Windows 11 23H2"
+    validations:
+      required: false
 
   - type: dropdown
     id: run_from
     attributes:
-      label: "Où tu l’exécutes ? / Where do you run it from?"
+      label: "Run from / Lancement"
       options:
-        - "Desktop / Bureau"
-        - "Inside tunes folder / Dans le dossier tunes"
-        - "Other folder / Autre dossier"
+        - "Release (.exe)"
+        - "Python (.py)"
+        - "Other"
     validations:
       required: true
 
   - type: dropdown
-    id: area
+    id: action
     attributes:
-      label: "Quelle action bug ? / Which action is bugged?"
+      label: "Where does it happen? / Où ça bug ?"
       options:
-        - "Export KND -> JSON"
-        - "Export KND -> TXT"
-        - "Patch JSON -> KND"
+        - "Open .knd"
+        - "Export JSON"
+        - "Export TXT"
+        - "Patch back to .knd"
         - "Diff / Compare"
-        - "Settings"
-        - "Update checker (GitHub)"
+        - "Backup"
+        - "Update checker"
+        - "UI / Translation"
         - "Other"
     validations:
       required: true
@@ -71,55 +84,61 @@ body:
   - type: dropdown
     id: severity
     attributes:
-      label: "Gravité / Severity"
+      label: "Severity / Gravité"
       options:
         - "Crash / Hard crash"
-        - "Bloquant / Blocking"
-        - "Gênant / Annoying"
-        - "Mineur / Minor"
+        - "Major (feature broken)"
+        - "Minor (annoying)"
+        - "Cosmetic (UI only)"
     validations:
       required: true
 
   - type: textarea
     id: what
     attributes:
-      label: "Problème / What happened?"
-      description: "FR ou EN — Décris clairement le bug."
-      placeholder: "Ex: Quand je fais Export JSON sur tel fichier, ça affiche une erreur..."
+      label: "What happened? / Problème"
+      description: "Décris clairement le problème."
+      placeholder: |
+        FR: Quand je fais ..., il se passe ...
+        EN: When I do ..., it does ...
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: "Étapes pour reproduire / Steps to reproduce"
+      label: "Steps to reproduce / Étapes"
       placeholder: |
-        1. ...
-        2. ...
-        3. ...
+        1) ...
+        2) ...
+        3) ...
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: "Résultat attendu / Expected behavior"
-      placeholder: "Ce qui devrait se passer."
+      label: "Expected behavior / Résultat attendu"
+      placeholder: |
+        FR: Je m’attendais à ...
+        EN: I expected ...
     validations:
       required: true
 
   - type: textarea
     id: actual
     attributes:
-      label: "Résultat actuel / Actual behavior"
-      placeholder: "Ce qui se passe réellement."
+      label: "Actual behavior / Résultat actuel"
+      placeholder: |
+        FR: À la place ...
+        EN: Instead ...
     validations:
       required: true
 
   - type: dropdown
     id: has_logs
     attributes:
-      label: "Logs / erreurs disponibles ? / Do you have logs?"
+      label: "Logs available? / Logs dispo ?"
       options:
         - "Yes / Oui"
         - "No / Non"
@@ -130,16 +149,17 @@ body:
     id: logs
     attributes:
       label: "Logs / Error message"
-      description: "Colle ici l’erreur (si tu as répondu Oui)."
       render: shell
+      placeholder: "Colle ici l’erreur / paste error here"
     validations:
       required: false
 
   - type: textarea
     id: attachments
     attributes:
-      label: "Fichiers / captures (optionnel)"
-      description: "Glisse-dépose ici : `.knd`, screenshots, vidéo, etc."
+      label: "Attachments (optional) / Fichiers (optionnel)"
+      description: "Glisse-dépose tes fichiers dans l’issue (captures, .knd, etc.)."
+      placeholder: "Screenshots / .knd / video link…"
     validations:
       required: false
 
@@ -148,10 +168,11 @@ body:
     attributes:
       label: "Checklist"
       options:
-        - label: "J’ai testé avec la dernière release."
+        - label: "J’ai testé avec la dernière release"
           required: true
-        - label: "J’ai donné des étapes claires."
+        - label: "J’ai mis des étapes claires"
           required: true
-        - label: "J’ai joint logs/capture si possible."
+        - label: "J’ai joint logs/capture si possible"
           required: false
+
 
