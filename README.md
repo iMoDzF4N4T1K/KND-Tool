@@ -1,9 +1,5 @@
 # KND-Tool (Kino) 🚗💨
 
-<p align="center">
-  <img src="https://github.com/iMoDzF4N4T1K/KND-Tool/blob/3f0817668080c411e156ae6616a3c12f011ede62/KNTool.png" />
-</p>
-
 [![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](#)
 [![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)](#)
 [![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
